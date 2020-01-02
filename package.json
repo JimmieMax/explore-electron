@@ -1,0 +1,62 @@
+{
+  "name": "explore-electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-packager . explore-electron --win --out ./app --arch=x64 --app-version=0.0.1 --electron-version=4.1.0",
+    "build": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JimmieMax/explore-electron.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JimmieMax/explore-electron/issues"
+  },
+  "homepage": "https://github.com/JimmieMax/explore-electron#readme",
+  "devDependencies": {
+    "electron": "^5.0.2",
+    "electron-builder": "^22.1.0",
+    "electron-packager": "^14.1.1",
+    "electron-updater": "^4.2.0"
+  },
+  "build": {
+    "electronVersion": "0.0.1",
+    "win": {
+      "requestedExecutionLevel": "highestAvailable",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "appId": "explore-electron",
+    "artifactName": "explore-electron-${version}-${arch}.${ext}",
+    "nsis": {
+      "artifactName": "explore-electron-${version}-${arch}.${ext}"
+    },
+    "extraResources": [
+      {
+        "from": "./static/xxxx/",
+        "to": "app-server",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://xxxxx/download/"
+      }
+    ]
+  }
+}
